@@ -1,0 +1,75 @@
+#include<cstdio>
+#include<cstdlib>
+#include<iostream>
+using namespace std;
+
+
+int num;
+int arr[50005]={0};
+int test;
+int tall;
+int left=0;
+int right=0;
+
+void binary_search(){
+	left=0;
+	right=num-1;
+	
+	while(left+1<right){
+		int mid=(left+right)/2;
+		/*
+		if(arr[mid]<tall){left=mid+1;}
+		else if(arr[mid]<tall){right=mid;}
+		else{right=mid-1; break;}*/
+		if(arr[mid]==tall){
+			left=mid-1;
+			right=mid+1;
+			break;
+		}
+		else if(arr[mid]>tall){right=mid;}
+		else{left=mid;}
+		
+	}
+	
+	//printf("right:%d\n",right);
+	return;
+}
+
+int main(){
+	//int left,right;
+	//int num;
+	//int test;
+	//int arr[50005]={0};
+	//int max=0,min=0;
+	scanf("%d",&num);
+	for(int i=0;i<num;i++){
+		scanf("%d",&arr[i]); 
+		/*if(!min){min=arr[i];}
+		if(max<arr[i]){max=arr[i];}
+		if(min>arr[i]){min=arr[i];}*/
+		}
+		//printf("num:%d\n",num);
+		//printf("%d %d",min,max);
+	scanf("%d",&test);
+	while(test--){
+		//int tall;
+		scanf("%d",&tall);
+		//printf("%d",tall);
+		
+		if(tall>arr[num-1]){printf("%d X\n",arr[num-1]);}
+		else if(tall==arr[num-1]){printf("%d X\n",arr[num-2]);}
+		else if(tall==arr[0]){printf("X %d",arr[1]);}
+		else if(tall<arr[0]){printf("X %d",arr[0]);}
+		else{
+			binary_search();
+			printf("%d %d\n",arr[left],arr[right]);
+		}
+		//if(ans!=(-1)){printf("%d %d",arr[ans-1],arr[ans]);}
+		
+	}
+
+
+
+	return 0;
+
+}
